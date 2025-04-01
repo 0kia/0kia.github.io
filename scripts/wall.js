@@ -18,7 +18,6 @@ window.onload = function reset(){
     cols_input[0].value = 2;
     var replace_LI = document.getElementById("replace_LI")
     replace_LI.checked = false
-    console.log("done")
 }
 
 const el = document.querySelector(".dummy-window");
@@ -88,7 +87,6 @@ function set_cols(){
     } 
 }
 function set_x(){
-    console.log("executed")
     switch (window.location.hash){
         case '#main': 
             el2.style.left = x_input[0].value + "px";
@@ -109,7 +107,6 @@ function set_y(){
     switch (window.location.hash){
         case '#main': 
             el2.style.top = parseInt(y_input[0].value) + 380.2 + "px";
-            console.log(el2.style.top)
             main[2] = y_input[0].value
             break;
         case '#locked':
@@ -159,8 +156,6 @@ function set_height(){
 
 function mousedown(e){
     let target = e.target;
-    console.log(e.target);
-    console.log(enable);
     window.addEventListener('mousemove',mousemove);
     window.addEventListener('mouseup',mouseup);
     // prev client x and y mouse positions
@@ -219,13 +214,10 @@ function mousedown(e){
             var posY = rect.top - newY
             lock_x = lock_x - newX
             lock_y = lock_y - newY -2*difference_scroll
-            console.log(bounding.top)
             //LOCK Y IS GETTING AN INSANE VALUE BECAUSE OF DIFFERENCE SCROLL
             if(rect.top > bounding.top){
                 if((lock_y >= locked_value || lock_y <= -locked_value) && is_locked){
-                    console.log("yes")
                     lock_y = lock_y - (lock_y%locked_value)
-                    console.log(rect.top + lock_y)
                     y_input[0].value = current_box[2] = Math.floor(rect.top + lock_y + difference_scroll - 380.2);
 
                     window_current.style.top = rect.top + lock_y + difference_scroll + "px";
@@ -326,32 +318,30 @@ function enable_window(){
     var dummyWindow = document.getElementsByClassName("dummy-window")
     var mainWindow = document.getElementsByClassName("main-window")
     var lockedWindow = document.getElementsByClassName("locked-window")
-    console.log(window.location.href)
-    console.log(window.location.hash)
     if(cb.checked==true){
-        if(window.location.href == "0kia.github.io/main.html#dummy"){
+        if(window.location.hash == "#dummy"){
             dummyWindow[0].style.display = "block";
             enable[0] = true
         }
-        else if(window.location.href == "0kia.github.io/main.html#main"){
+        else if(window.location.hash == "#main"){
             mainWindow[0].style.display = "block";
             enable[1] = true
         }
-        else if(window.location.href == "0kia.github.io/main.html#locked"){
+        else if(window.location.hash == "#locked"){
             lockedWindow[0].style.display = "block";
             enable[2] = true
         }
     }
     else{
-        if(window.location.href == "0kia.github.io/main.html#dummy"){
+        if(window.location.hash == "#dummy"){
             dummyWindow[0].style.display = "none";
             enable[0] = false
 
-        }else if(window.location.href == "0kia.github.io/main.html#main"){
+        }else if(window.location.hash == "#main"){
             mainWindow[0].style.display = "none";
             enable[1] = false
         }
-        else if(window.location.href == "0kia.github.io/main.html#locked"){
+        else if(window.location.hash == "#locked"){
             lockedWindow[0].style.display = "none";
             enable[2] = false
         }
@@ -366,7 +356,6 @@ function page_dummy(){
     var cb = document.getElementById("enable")
     cb.checked = enable[0];
     window.location.hash = 'dummy';
-    console.log(dummy[1])
     x_input[0].value = dummy[1]
     y_input[0].value = dummy[2]
     width_input[0].value = dummy[3]
@@ -385,7 +374,6 @@ function page_main(){
     height_input[0].value = main[4]
     rows_input[0].value = main[5]
     cols_input[0].value = main[6]
-    console.log(main[5])
 }
 
 function page_locked(){
