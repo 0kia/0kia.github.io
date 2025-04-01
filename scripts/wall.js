@@ -18,6 +18,7 @@ window.onload = function reset(){
     cols_input[0].value = 2;
     var replace_LI = document.getElementById("replace_LI")
     replace_LI.checked = false
+    console.log("done")
 }
 
 const el = document.querySelector(".dummy-window");
@@ -68,7 +69,7 @@ function set_rows(){
             locked[5] = rows_input[0].value
             break;
         case '#dummy':
-            dummyn[5] = rows_input[0].value
+            dummy[5] = rows_input[0].value
             break;
     }
 }
