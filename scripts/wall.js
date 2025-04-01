@@ -328,29 +328,29 @@ function enable_window(){
     var lockedWindow = document.getElementsByClassName("locked-window")
 
     if(cb.checked==true){
-        if(window.location.href == "http://127.0.0.1:5500/main.html#dummy"){
+        if(window.location.href == "0kia.github.io/main.html#dummy"){
             dummyWindow[0].style.display = "block";
             enable[0] = true
         }
-        else if(window.location.href == "http://127.0.0.1:5500/main.html#main"){
+        else if(window.location.href == "0kia.github.io/main.html#main"){
             mainWindow[0].style.display = "block";
             enable[1] = true
         }
-        else if(window.location.href == "http://127.0.0.1:5500/main.html#locked"){
+        else if(window.location.href == "0kia.github.io/main.html#locked"){
             lockedWindow[0].style.display = "block";
             enable[2] = true
         }
     }
     else{
-        if(window.location.href == "http://127.0.0.1:5500/main.html#dummy"){
+        if(window.location.href == "0kia.github.io/main.html#dummy"){
             dummyWindow[0].style.display = "none";
             enable[0] = false
 
-        }else if(window.location.href == "http://127.0.0.1:5500/main.html#main"){
+        }else if(window.location.href == "0kia.github.io/main.html#main"){
             mainWindow[0].style.display = "none";
             enable[1] = false
         }
-        else if(window.location.href == "http://127.0.0.1:5500/main.html#locked"){
+        else if(window.location.href == "0kia.github.io/main.html#locked"){
             lockedWindow[0].style.display = "none";
             enable[2] = false
         }
