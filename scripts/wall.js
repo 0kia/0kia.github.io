@@ -326,7 +326,8 @@ function enable_window(){
     var dummyWindow = document.getElementsByClassName("dummy-window")
     var mainWindow = document.getElementsByClassName("main-window")
     var lockedWindow = document.getElementsByClassName("locked-window")
-
+    console.log(window.location.href)
+    console.log(window.location.hash)
     if(cb.checked==true){
         if(window.location.href == "0kia.github.io/main.html#dummy"){
             dummyWindow[0].style.display = "block";
