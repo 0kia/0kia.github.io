@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall Creator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts/wall.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <b>SeedQueue Wall Tool</b>
+      </div>
+      <div class="author">by okiabetter</div>
+    </div>
+    <div class="nav-container">
+      <ul>
+        <li><a onclick="page_dummy()" href="#dummy">Dummy</a></li>
+        <li><a onclick="page_main()" href="#main">Main</a></li>
+        <li><a onclick="page_locked()" href="#locked">Locked</a></li>
+      </ul>
+    </div>
+    <div class="main-options">
+      <button class="copy" type="button" onclick="get_json()">Copy to Clipboard</button>
+      <div class="enabled">
+        <input onclick="enable_window()" type="checkbox" id="enable"> Enable
+        <input type="checkbox" id="replace_LI"> Replace Locked Instances?
+      </div>
+      <div class="lock_grid">
+        <input id="locked_grid" onclick="enable_lock()" type="checkbox"> Lock to Grid
+        <input id="lock_value" type="number" name="lock_value" value="0" min="0" max="960">
+      </div>
+      <div class="dimensions">
+        <ul>
+          <li>
+            <span>Rows</span>
+            <ul>
+              <li>
+                <input
+                  type="number"
+                  name="rows"
+                  value="2"
+                  min="1"
+                  max="10"
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>Cols</span>
+            <ul>
+              <li>
+                <input
+                  type="number"
+                  name="cols"
+                  value="2"
+                  min="1"
+                  max="10"
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+        <ul>
+          <li>
+            <span>Width</span>
+            <ul>
+              <li>
+                <input
+                  type="number"
+                  name="size-width"
+                  value="200"
+                  min="0"
+                  max="1920"
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>Height</span>
+            <ul>
+              <li>
+                <input
+                  type="number"
+                  name="size-height"
+                  value="100"
+                  min="0"
+                  max="1080"
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+        <ul>
+          <li>
+            <span>X</span>
+            <ul>
+              <li>
+                <input
+                  type="number"
+                  name="pos-X"
+                  value="0"
+                  min="0"
+                  max="1920"
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>Y</span>
+            <ul>
+              <li><input type="number" name="pos-Y" value="0" min="" max=""></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="screen">
+      <div class="dummy-window" onclick="page_dummy()">
+        <div class="resizer ne dummy"></div>
+        <div class="resizer nw dummy"></div>
+        <div class="resizer sw dummy"></div>
+        <div class="resizer se dummy"></div>
+      </div>
+      <div class="main-window" onclick="page_main()">
+        <div class="resizer n2e main"></div>
+        <div class="resizer n2w main"></div>
+        <div class="resizer s2w main"></div>
+        <div class="resizer s2e main"></div>
+      </div>
+      <div class="locked-window" onclick="page_locked()">
+        <div class="resizer n3e locked"></div>
+        <div class="resizer n3w locked"></div>
+        <div class="resizer s3w locked"></div>
+        <div class="resizer s3e locked"></div>
+      </div>
+    </div>
+  </body>
+</html>

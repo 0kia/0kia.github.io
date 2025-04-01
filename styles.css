@@ -1,0 +1,202 @@
+html {
+    scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+  
+
+body{
+    background-color: rgb(41, 41, 41);
+    margin: 0;
+}
+
+
+.header{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    color: lightgrey;
+    font-size: 3rem;
+    background-color: black;
+
+}
+
+.author{
+    font-size: 1rem;
+    text-align: right;
+    margin-top: -22px;
+    padding-right: 3rem;
+    padding-bottom: 0.2rem;
+}
+
+.nav-container{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(61, 61, 61);
+    padding: 1px 0;
+}
+
+.nav-container ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.nav-container ul li{
+    margin: 0;
+}
+
+.nav-container ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 1rem 10rem;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+    font-size: 1.5rem;
+}
+
+.nav-container ul li a:hover{
+    background-color: rgb(29, 160, 29);
+}
+
+.main-options{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(29, 160, 29);
+    border-color: black;
+    border-style:dashed;
+    border-radius: 20px;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    padding: 1px;
+}
+
+input[type="number"]{
+    width: 5rem;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    outline-width: none;
+    appearance: textfield;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.dimensions{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.dimensions ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 1px;
+    margin: 0;
+}
+
+ul li{
+    color: grey;
+    text-align: center;
+}
+
+.screen{
+    width: 1920;
+    height: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    position:static;
+    background-color: black;
+    background-image: url("images/background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.dummy-window{
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    background: rgb(102, 102, 102);
+    background-image: none;
+    justify-content: none;
+    background-color: none;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resizer{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: none;
+    z-index: 2;
+}
+
+.resizer.se{
+    bottom: -1px;
+    right: -1px;
+    cursor: se-resize;
+    background-color: peru;
+}
+
+.main-window{
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    background: rgb(0, 195, 255);
+    background-image: none;
+    justify-content: none;
+    background-color: none;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resizer.s2e{
+    bottom: -1px;
+    right: -1px;
+    cursor: se-resize;
+    background-color: peru;
+}
+
+.locked-window{
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    background: rgb(255, 0, 0);
+    background-image: none;
+    justify-content: none;
+    background-color: none;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resizer.s3e{
+    bottom: -1px;
+    right: -1px;
+    cursor: se-resize;
+    background-color: peru;
+}
+
+.lock_grid{
+    display: block;
+}
+
+.copy{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#replace_LI{
+    margin-left: 82%;
+    padding: 0px;
+}
