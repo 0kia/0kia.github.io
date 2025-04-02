@@ -389,42 +389,46 @@ function page_locked(){
 }
 
 function get_json(){
+    console.log(main[3])
+    console.log(main[4])
     custom_layout = {
         "main":
         {
-            "rows" : main[5],
-            "columns" : main[6],
-            "x" : main[1]/1920.0,
-            "y" : main[2]/1080.0,
-            "width" : main[3]/1920.0,
-            "height" : main[4]/1080.0
-        },
-        "locked":
-        {
-            "rows" : locked[5],
-            "columns" : locked[6],
-            "x" : locked[1]/1920.0,
-            "y" : locked[2]/1080.0,
-            "width" : locked[3]/1920.0,
-            "height" : locked[4]/1080.0
-        },
-        "preparing":
-        [{
             "rows" : dummy[5],
             "columns" : dummy[6],
             "x" : dummy[1]/1920.0,
             "y" : dummy[2]/1080.0,
-            "width" : dummy[3]/1920.0,
-            "height" : dummy[4]/1080.0
+            "width" : dummy[3]/1920.0 == 1 ? 0.9999999 : dummy[3]/1920.0,
+            "height" : dummy[4]/1080.0 == 1 ? 0.9999999 : dummy[4]/1920.0
+        },
+        "locked":
+        {
+            "rows" : parseInt(locked[5]),
+            "columns" : parseInt(locked[6]),
+            "x" : locked[1]/1920.0,
+            "y" : locked[2]/1080.0,
+            "width" : locked[3]/1920.0 == 1 ? 0.9999999 : locked[3]/1920.0,
+            "height" : locked[4]/1080.0 == 1 ? 0.9999999 : locked[4]/1920.0
+        },
+        "preparing":
+        [{
+            "rows" : main[5],
+            "columns" : main[6],
+            "x" : main[1]/1920.0,
+            "y" : main[2]/1080.0,
+            "width" : (main[3]/1920.0 == 1) ? 0.9999999 : main[3]/1920.0,
+            "height" : (main[4]/1080.0 == 1) ? 0.9999999 : main[4]/1920.0
         }],
         "replaceLockedInstances": replace_LI.checked
     }
+    if(custom_layout.main.width == 1){
 
+    }
     if(!enable[0]){
-        delete custom_layout.preparing
+        delete custom_layout.main
     }
     if(!enable[1]){
-        delete custom_layout.main
+        delete custom_layout.preparing
     }
     if(!enable[2]){
         delete custom_layout.locked
