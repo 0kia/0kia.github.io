@@ -389,8 +389,6 @@ function page_locked(){
 }
 
 function get_json(){
-    console.log(main[3])
-    console.log(main[4])
     custom_layout = {
         "main":
         {
@@ -424,11 +422,11 @@ function get_json(){
     if(custom_layout.main.width == 1){
 
     }
-    if(!enable[0]){
-        delete custom_layout.main
-    }
     if(!enable[1]){
         delete custom_layout.preparing
+    }
+    if(!enable[0]){
+        delete custom_layout.main
     }
     if(!enable[2]){
         delete custom_layout.locked
