@@ -16,8 +16,10 @@ window.onload = function reset(){
     var cols_input = document.getElementsByName("cols")
     rows_input[0].value = 2;
     cols_input[0].value = 2;
-    var replace_LI = document.getElementById("replace_LI")
-    replace_LI.checked = false
+    document.getElementById("replace_LI").checked = false
+    document.getElementById("locked_grid").checked = false
+    is_locked=false
+
 }
 
 const el = document.querySelector(".dummy-window");
@@ -106,15 +108,15 @@ function set_x(){
 function set_y(){
     switch (window.location.hash){
         case '#main': 
-            el2.style.top = parseInt(y_input[0].value) + 380.2 + "px";
+            el2.style.top = parseInt(y_input[0].value) + 371 + "px";
             main[2] = y_input[0].value
             break;
         case '#locked':
-            el3.style.top = parseInt(y_input[0].value) + 380.2 + "px";
+            el3.style.top = parseInt(y_input[0].value) + 371 + "px";
             locked[2] = y_input[0].value
             break;
         case '#dummy':
-            el.style.top = parseInt(y_input[0].value) + 380.2 + "px";
+            el.style.top = parseInt(y_input[0].value) + 371 + "px";
             dummy[2] = y_input[0].value
             break;
     }
@@ -176,16 +178,15 @@ function mousedown(e){
     height_input[0].value = current_box_selected[4]
     rows_input[0].value = current_box_selected[5]
     cols_input[0].value = current_box_selected[6]
-
+    var window_current;
+    var current_box;
+    const bounding = screenbox.getBoundingClientRect();
+    var difference_scroll = bounding_for_scroll - bounding.top;
     function mousemove(e){
         if(!isResizing){
-            const bounding = screenbox.getBoundingClientRect();
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
             var rect;
-            var window_current;
-            var current_box;
-            var difference_scroll = bounding_for_scroll - bounding.top;
             locked_value = document.getElementById("lock_value").value;
             if(difference_scroll != 0){
                 newY = newY - 2*difference_scroll;
@@ -215,41 +216,53 @@ function mousedown(e){
             lock_x = lock_x - newX
             lock_y = lock_y - newY -2*difference_scroll
             //LOCK Y IS GETTING AN INSANE VALUE BECAUSE OF DIFFERENCE SCROLL
-            if(rect.top > bounding.top){
+            if(rect.top >= bounding.top){
                 if((lock_y >= locked_value || lock_y <= -locked_value) && is_locked){
                     lock_y = lock_y - (lock_y%locked_value)
-                    y_input[0].value = current_box[2] = Math.floor(rect.top + lock_y + difference_scroll - 380.2);
-
-                    window_current.style.top = rect.top + lock_y + difference_scroll + "px";
+                    var tempy = rect.top + lock_y + difference_scroll - 371
+                    y_input[0].value = current_box[2] = (tempy) - (tempy)%locked_value;
+                    window_current.style.top = (tempy) - (tempy)%locked_value + 371 + "px";
                     lock_y = 0 
                 }
 
                 if((lock_x >= locked_value || lock_x <= -locked_value) && is_locked){
                     lock_x = lock_x - (lock_x%locked_value)
-                    x_input[0].value = current_box[1] = rect.left + lock_x;
-                    window_current.style.left = rect.left + lock_x + "px";
+                    var tempx = rect.left + lock_x
+                    x_input[0].value = current_box[1] = tempx - (tempx)%locked_value;
+                    window_current.style.left = tempx - (tempx)%locked_value + "px";
                     lock_x = 0
                 
                 }else if(!is_locked){
                     x_input[0].value = current_box[1] = posX;
                     window_current.style.left = posX + "px";
-                    y_input[0].value = current_box[2] = Math.floor(posY - difference_scroll-380.2);
+                    y_input[0].value = current_box[2] = posY - difference_scroll-371;
                     window_current.style.top = posY - difference_scroll + "px";
                 }
             }
             else{
-                y_input[0].value = current_box[2] = Math.floor(bounding.top + 1 + difference_scroll-380.2);
+                if(is_locked){
+                    y_input[0].value = current_box[2] = bounding.top + difference_scroll-371;
+                    window_current.style.top = bounding.top + difference_scroll + "px";
+                }
+                else if(rect.top < bounding.top){
+                y_input[0].value = current_box[2] = bounding.top + 1 + difference_scroll-371;
                 window_current.style.top = bounding.top + 1 + difference_scroll + "px";
+                }
             }
-            if((rect.left <= bounding.left)){
-                x_input[0].value = current_box[1] = bounding.left + 1
-                window_current.style.left = bounding.left + 1 + "px";
+            if((rect.left < bounding.left)){
+                if(is_locked){
+                    x_input[0].value = current_box[1] = bounding.left
+                    window_current.style.left = bounding.left + "px";
+                }else{
+                    x_input[0].value = current_box[1] = bounding.left + 1
+                    window_current.style.left = bounding.left + 1 + "px";
+                }
             }
             if((rect.right > bounding.right-2)){
                 x_input[0].value = current_box[1] = bounding.right-2 - window_current.offsetWidth;
                 window_current.style.left = bounding.right-2 - window_current.offsetWidth + "px";
             }
-            if((rect.bottom > bounding.bottom-1)){
+            if((rect.bottom > bounding.bottom-2)){
                 y_input[0].value = current_box[2] = (bounding.bottom-1 - window_current.offsetHeight + difference_scroll - 1);
                 window_current.style.top = bounding.bottom-1 - window_current.offsetHeight + difference_scroll - 1 + "px";
             }
@@ -262,6 +275,14 @@ function mousedown(e){
         lock_x = 0
         window.removeEventListener('mousemove',mousemove);
         window.removeEventListener('mouseup',mouseup);
+        if(y_input[0].value < 0){
+            y_input[0].value = current_box[2] = bounding.top + difference_scroll-371;
+            window_current.style.top = bounding.top + difference_scroll + "px";
+        }
+        if(x_input[0].value < 0){
+            x_input[0].value = current_box[1] = bounding.left;
+            window_current.style.left = bounding.left + "px";
+        }
     }
 }
 

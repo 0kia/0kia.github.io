@@ -29,13 +29,14 @@ body{
     text-align: right;
     margin-top: -22px;
     padding-right: 3rem;
-    padding-bottom: 0.2rem;
+    padding-bottom: 0rem;
 }
 
 .nav-container{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(61, 61, 61);
     padding: 1px 0;
+    height: 60px;
 }
 
 .nav-container ul{
@@ -68,9 +69,11 @@ body{
     border-color: black;
     border-style:dashed;
     border-radius: 20px;
+    border-width: 2px;
     margin-left: 10rem;
     margin-right: 10rem;
-    padding: 1px;
+    padding: 0px;
+    height: 250px;
 }
 
 input[type="number"]{
