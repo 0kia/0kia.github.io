@@ -200,6 +200,14 @@ ul li{
 }
 
 #replace_LI{
-    margin-left: 82%;
+    margin-left: 32%;
+    padding: 0px;
+}
+#centerY{
+    margin-left: 0%;
+    padding: 0px;
+}
+#centerX{
+    margin-left:42%;
     padding: 0px;
 }

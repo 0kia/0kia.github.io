@@ -245,26 +245,22 @@ function mousedown(e){
                     window_current.style.top = bounding.top + difference_scroll + "px";
                 }
                 else if(rect.top < bounding.top){
-                y_input[0].value = current_box[2] = bounding.top + 1 + difference_scroll-371;
-                window_current.style.top = bounding.top + 1 + difference_scroll + "px";
+                y_input[0].value = current_box[2] = bounding.top + difference_scroll-371;
+                window_current.style.top = bounding.top + difference_scroll + "px";
                 }
             }
             if((rect.left < bounding.left)){
-                if(is_locked){
                     x_input[0].value = current_box[1] = bounding.left
                     window_current.style.left = bounding.left + "px";
-                }else{
-                    x_input[0].value = current_box[1] = bounding.left + 1
-                    window_current.style.left = bounding.left + 1 + "px";
-                }
             }
-            if((rect.right > bounding.right-2)){
-                x_input[0].value = current_box[1] = bounding.right-2 - window_current.offsetWidth;
-                window_current.style.left = bounding.right-2 - window_current.offsetWidth + "px";
+            if((rect.right >= bounding.right)){
+                x_input[0].value = current_box[1] = bounding.right-1 - window_current.offsetWidth;
+                window_current.style.left = bounding.right-1 - window_current.offsetWidth + "px";
             }
-            if((rect.bottom > bounding.bottom-2)){
-                y_input[0].value = current_box[2] = (bounding.bottom-1 - window_current.offsetHeight + difference_scroll - 1);
-                window_current.style.top = bounding.bottom-1 - window_current.offsetHeight + difference_scroll - 1 + "px";
+
+            if((rect.bottom >= bounding.bottom)){
+                y_input[0].value = current_box[2] = (bounding.bottom - window_current.offsetHeight + difference_scroll - 1 - 371);
+                window_current.style.top = bounding.bottom - window_current.offsetHeight + difference_scroll - 1 + "px";
             }
             prevX = e.clientX;
             prevY = e.clientY;
@@ -276,13 +272,22 @@ function mousedown(e){
         window.removeEventListener('mousemove',mousemove);
         window.removeEventListener('mouseup',mouseup);
         if(y_input[0].value < 0){
-            y_input[0].value = current_box[2] = bounding.top + difference_scroll-371;
-            window_current.style.top = bounding.top + difference_scroll + "px";
+                y_input[0].value = current_box[2] = (bounding.bottom - window_current.offsetHeight + difference_scroll - 1 - 371);
+                window_current.style.top = bounding.bottom - window_current.offsetHeight + difference_scroll - 1 + "px";
+        }
+        if(y_input[0].value >= bounding.bottom+difference_scroll-371- window_current.offsetHeight){
+            y_input[0].value = current_box[2] = (bounding.bottom - window_current.offsetHeight + difference_scroll - 1 - 371);
+            window_current.style.top = bounding.bottom - window_current.offsetHeight + difference_scroll - 1 + "px";
         }
         if(x_input[0].value < 0){
             x_input[0].value = current_box[1] = bounding.left;
             window_current.style.left = bounding.left + "px";
         }
+        if(x_input[0].value >= bounding.right - window_current.offsetWidth){
+            x_input[0].value = current_box[1] = bounding.right-1 - window_current.offsetWidth;
+            window_current.style.left = bounding.right-1 - window_current.offsetWidth + "px";
+        }
+
     }
 }
 
