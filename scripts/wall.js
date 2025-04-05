@@ -423,7 +423,7 @@ function center_X(){
 function center_Y(){
 
     y_input[0].value = current_box[2] = 540 - Math.floor(window_current.offsetHeight/2);
-    window_current.style.top = 540 - Math.floor(window_current.offsetHeight/2);
+    window_current.style.top = 540 - Math.floor(window_current.offsetHeight/2) + 371 + "px";
 }
 
 function get_json(){
