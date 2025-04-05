@@ -272,8 +272,8 @@ function mousedown(e){
         window.removeEventListener('mousemove',mousemove);
         window.removeEventListener('mouseup',mouseup);
         if(y_input[0].value < 0){
-                y_input[0].value = current_box[2] = (bounding.bottom - window_current.offsetHeight + difference_scroll - 1 - 371);
-                window_current.style.top = bounding.bottom - window_current.offsetHeight + difference_scroll - 1 + "px";
+                y_input[0].value = current_box[2] = (bounding.top + difference_scroll - 371);
+                window_current.style.top = bounding.top + difference_scroll + "px";
         }
         if(y_input[0].value >= bounding.bottom+difference_scroll-371- window_current.offsetHeight){
             y_input[0].value = current_box[2] = (bounding.bottom - window_current.offsetHeight + difference_scroll - 1 - 371);
@@ -415,10 +415,15 @@ function page_locked(){
 }
 
 function center_X(){
-    console.log(959 - Math.floor(window_current.style.width/2))
     //half of screen - half of current width
-    x_input[0].value = current_box[1] = Math.floor(1919/2) - Math.floor(window_current.offsetWidth/2)
-    window_current.style.left = Math.floor(1919/2) - Math.floor(window_current.offsetWidth/2) + "px";
+    x_input[0].value = current_box[1] = 959 - Math.floor(window_current.offsetWidth/2)
+    window_current.style.left = 959 - Math.floor(window_current.offsetWidth/2) + "px";
+}
+
+function center_Y(){
+
+    y_input[0].value = current_box[2] = 540 - Math.floor(window_current.offsetHeight/2);
+    window_current.style.top = 540 - Math.floor(window_current.offsetHeight/2);
 }
 
 function get_json(){
