@@ -50,6 +50,8 @@ let currentResizer;
 let isResizing = false;
 let isResizing2 = false;
 let bounding_for_scroll = screenbox.getBoundingClientRect().top;
+var window_current;
+var current_box;
 
 el.addEventListener('mousedown',mousedown);
 el2.addEventListener('mousedown',mousedown);
@@ -178,15 +180,13 @@ function mousedown(e){
     height_input[0].value = current_box_selected[4]
     rows_input[0].value = current_box_selected[5]
     cols_input[0].value = current_box_selected[6]
-    var window_current;
-    var current_box;
     const bounding = screenbox.getBoundingClientRect();
     var difference_scroll = bounding_for_scroll - bounding.top;
+    var rect;
     function mousemove(e){
         if(!isResizing){
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
-            var rect;
             locked_value = document.getElementById("lock_value").value;
             if(difference_scroll != 0){
                 newY = newY - 2*difference_scroll;
@@ -412,6 +412,13 @@ function page_locked(){
     height_input[0].value = locked[4]
     rows_input[0].value = locked[5]
     cols_input[0].value = locked[6]
+}
+
+function center_X(){
+    console.log(959 - Math.floor(window_current.style.width/2))
+    //half of screen - half of current width
+    x_input[0].value = current_box[1] = Math.floor(1919/2) - Math.floor(window_current.offsetWidth/2)
+    window_current.style.left = Math.floor(1919/2) - Math.floor(window_current.offsetWidth/2) + "px";
 }
 
 function get_json(){
