@@ -182,8 +182,8 @@ function mousedown(e){
     cols_input[0].value = current_box_selected[6]
     const bounding = screenbox.getBoundingClientRect();
     var difference_scroll = bounding_for_scroll - bounding.top;
-    var rect;
     function mousemove(e){
+        var rect;
         if(!isResizing){
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
@@ -430,8 +430,8 @@ function get_json(){
     custom_layout = {
         "main":
         {
-            "rows" : dummy[5],
-            "columns" : dummy[6],
+            "rows" : parseInt(dummy[5]),
+            "columns" : parseInt(dummy[6]),
             "x" : dummy[1]/1920.0,
             "y" : dummy[2]/1080.0,
             "width" : dummy[3]/1920.0 == 1 ? 0.9999999 : dummy[3]/1920.0,
@@ -448,8 +448,8 @@ function get_json(){
         },
         "preparing":
         [{
-            "rows" : main[5],
-            "columns" : main[6],
+            "rows" : parseInt(main[5]),
+            "columns" : parseInt(main[6]),
             "x" : main[1]/1920.0,
             "y" : main[2]/1080.0,
             "width" : (main[3]/1920.0 == 1) ? 0.9999999 : main[3]/1920.0,
@@ -461,7 +461,8 @@ function get_json(){
 
     }
     if(!enable[0]){
-        delete custom_layout.main
+        custom_layout.main = custom_layout.preparing[0]
+        delete custom_layout.preparing
     }
     if(!enable[1]){
         delete custom_layout.preparing
