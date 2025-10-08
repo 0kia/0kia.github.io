@@ -159,6 +159,8 @@ function set_height(){
 }
 
 function mousedown(e){
+    window.removeEventListener('mousemove', mousemove);
+    window.removeEventListener('mouseup', mouseup);
     let target = e.target;
     window.addEventListener('mousemove',mousemove);
     window.addEventListener('mouseup',mouseup);
@@ -167,11 +169,11 @@ function mousedown(e){
     let prevY = e.clientY;
 
     let current_box_selected;
-    if(target.classList.contains("main-window" || "r2esizer") == true){
+    if(target.classList.contains("main-window") || target.classList.contains("r2esizer")){
         current_box_selected = main
     }else if (target.classList.contains("locked-window") == true){
         current_box_selected = locked
-    }else if(target.classList.contains("dummy-window" || "resizer") == true){
+    }else if(target.classList.contains("dummy-window") || target.classList.contains("resizer")){
         current_box_selected = dummy
     }
     x_input[0].value = current_box_selected[1]
