@@ -74,6 +74,11 @@ body{
     margin-right: 10rem;
     padding: 0px;
     height: 250px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 input[type="number"]{
@@ -117,6 +122,11 @@ ul li{
     background-position: center;
     justify-content: center;
     overflow: visible;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .dummy-window{
@@ -130,6 +140,11 @@ ul li{
     display: none;
     margin-left: auto;
     margin-right: auto;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .resizer{
@@ -139,6 +154,11 @@ ul li{
     border-radius: 5px;
     background-color: none;
     z-index: 2;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .resizer.se{
@@ -146,6 +166,11 @@ ul li{
     right: -1px;
     cursor: se-resize;
     background-color: peru;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .main-window{
@@ -159,6 +184,11 @@ ul li{
     display: none;
     margin-left: auto;
     margin-right: auto;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .resizer.s2e{
@@ -166,6 +196,11 @@ ul li{
     right: -1px;
     cursor: se-resize;
     background-color: peru;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .locked-window{
@@ -179,6 +214,11 @@ ul li{
     display: none;
     margin-left: auto;
     margin-right: auto;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .resizer.s3e{
@@ -186,6 +226,11 @@ ul li{
     right: -1px;
     cursor: se-resize;
     background-color: peru;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .lock_grid{
