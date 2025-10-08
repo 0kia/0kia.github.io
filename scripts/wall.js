@@ -381,6 +381,8 @@ function enable_lock(){
 }
 
 function page_dummy(){
+    lock_x = 0;
+    lock_y = 0;
     var cb = document.getElementById("enable")
     cb.checked = enable[0];
     window.location.hash = 'dummy';
@@ -393,6 +395,8 @@ function page_dummy(){
 }
 
 function page_main(){
+    lock_x = 0;
+    lock_y = 0;
     var cb = document.getElementById("enable")
     cb.checked = enable[1];
     window.location.hash = 'main';
@@ -405,6 +409,8 @@ function page_main(){
 }
 
 function page_locked(){
+    lock_x = 0;
+    lock_y = 0;
     var cb = document.getElementById("enable")
     cb.checked = enable[2];
     window.location.hash = 'locked';
