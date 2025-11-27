@@ -193,20 +193,17 @@ function mousedown(e){
             if(difference_scroll != 0){
                 newY = newY - 2*difference_scroll;
             }
-            if(target.classList.contains("main-window" || "r2esizer") == true){
+            if(target.classList.contains("main-window")){
                 rect = el2.getBoundingClientRect();
                 window_current = el2;
-                resizers = document.querySelectorAll(".r3esizer")
                 current_box = main //to store coords and display for each movable item
-            }else if(target.classList.contains("locked-window") == true){
+            }else if(target.classList.contains("locked-window")){
                 rect = el3.getBoundingClientRect();
                 window_current = el3;
-                resizers = document.querySelectorAll(".r2esizer")
                 current_box = locked //to store coords and display for each movable item
-            }else if(target.classList.contains("dummy-window" || "resizer") == true){
+            }else if(target.classList.contains("dummy-window")){
                 rect = el.getBoundingClientRect();
                 window_current = el;
-                resizers = document.querySelectorAll(".resizer")
                 current_box = dummy //to store coords and display for each movable item
             }else{
                 return
