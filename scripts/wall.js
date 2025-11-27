@@ -305,14 +305,26 @@ for(let resizer of resizers){
         var current_box2;
         if(currentResizer.classList.contains("dummy")){
             window_current2 = el;
-            current_box2 = dummy
-        }else if(currentResizer.classList.contains("main")){
-            window_current2 = el2;
-            current_box2 = main
-        }else if(currentResizer.classList.contains("locked")){
-            window_current2 = el3;
-            current_box2 = locked
+            current_box2 = dummy;
+            current_box = dummy;           // ADD THIS
+            window_current = el;           // ADD THIS
+            window.location.hash = "dummy"; // optional: sync UI
         }
+        else if(currentResizer.classList.contains("main")){
+            window_current2 = el2;
+            current_box2 = main;
+            current_box = main;            // ADD THIS
+            window_current = el2;          // ADD THIS
+            window.location.hash = "main"; // optional
+        }
+        else if(currentResizer.classList.contains("locked")){
+            window_current2 = el3;
+            current_box2 = locked;
+            current_box = locked;          // ADD THIS
+            window_current = el3;          // ADD THIS
+            window.location.hash = "locked"; // optional
+        }
+
 
         let prevX = e.clientX;
         let prevY = e.clientY;
